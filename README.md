@@ -19,4 +19,7 @@ npm run build
 ```
 npm run lint
 ```
-![Alt text](src\images\data.PNG "Optional Title")
+
+
+
+![Alt text](src/images/data.PNG?raw=true "Title")
