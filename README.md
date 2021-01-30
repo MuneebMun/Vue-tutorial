@@ -22,4 +22,10 @@ npm run lint
 
 
 
-![Alt text](src/images/data.PNG?raw=true "Title")
+![Alt text](src/images/data.PNG?raw=true)
+![Alt text](src/images/data1.PNG?raw=true)
+![Alt text](src/images/data2.PNG?raw=true)
+![Alt text](src/images/data3.PNG?raw=true)
+![Alt text](src/images/data4.PNG?raw=true)
+![Alt text](src/images/vue.PNG?raw=true)
+
