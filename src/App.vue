@@ -3,7 +3,9 @@
     <employee-form @onAdd:employee='addEmployee'/>
      <h3>Employee List</h3>
     
-    <employee-list :employeeDetails="employeeDetails" 
+    <employee-list 
+      :employeeDetails="employeeDetails"
+      :isLoading="isLoading" 
       @on-delete-employee="deleteEmployee"
       @edit-employee-details="editEmployeeDetail"
     
@@ -41,25 +43,29 @@ export default {
   },
   data () {
     return {
-      employeeDetails : [
-        {
-          id: 1,
-          name: 'Richard Hendricks',
-          email: 'richard@piedpiper.com',
-        },
-        {
-          id: 2,
-          name: 'Bertram Gilfoyle',
-          email: 'gilfoyle@piedpiper.com',
-        },
-        {
-          id: 3,
-          name: 'Dinesh Chugtai',
-          email: 'dinesh@piedpiper.com',
-        },
-      ]
+      employeeDetails : [],
+      isLoading: true,
     }
+  },
+
+  async mounted(){
+    try {
+       const response = await fetch ("https://jsonplaceholder.typicode.com/users")
+       const data = await response.json();
+       this.employeeDetails = data;
+     }
+     catch(err) {
+       console.log(err)
+     }
+     finally {
+       // DELAYING JUST TO GET SENSE OF THE LODING SPINNER
+       setTimeout(() => {
+         this.isLoading = false;
+       },4000)
+      
+     }
   }
+
 }
 </script>
 

@@ -1,6 +1,9 @@
 <template>
 <div id="container">
-    <table id="employee-details">
+  <div v-if="isLoading">
+    <img src='../assets/images/loader.jpg' alt="loader"/>
+  </div>
+    <table v-else id="employee-details">
       <thead>
         <tr>
           <th>Employee ID</th>
@@ -40,15 +43,15 @@
 </template>
 
 <script>
+
 export default {
     name: 'EmployeeList',
     // mention what kind of props you are expecting 
     props: {
-        employeeDetails: Array //  so we tell the component that it will receive props, in this case an Array
+        isLoading: String,
+        employeeDetails: Array, //  so we tell the component that it will receive props, in this case an Array
     },
-    mounted(){
-        console.log(this.employeeDetails)
-    },
+
     data: function () {
       return {
         employeeID: null
@@ -72,6 +75,11 @@ export default {
         // TO CANCEL UPDATE FROM UPDATING WE NEED TO CACHE THE OBJECT. 
         Object.assign(employee, this.cachedEmployees)
         this.employeeID = null;
+      }
+    },
+    watch: {
+      isLoading: function(valNew,valOld) {
+        console.log(valNew,valOld,"CHECK HERE")
       }
     }
 }
